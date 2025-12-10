@@ -1,0 +1,532 @@
+[
+  {
+    "id": 1,
+    "year": 2021,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Bacteriology",
+    "subtopic": "Staphylococcus",
+    "marks": 10,
+    "question": "Describe the pathogenicity and lab diagnosis of Staphylococcus aureus."
+  },
+  {
+    "id": 2,
+    "year": 2020,
+    "subject": "Pharmacology",
+    "exam": "Internal",
+    "topic": "Autonomic NS",
+    "subtopic": "Beta Blockers",
+    "marks": 3,
+    "question": "Classify beta-blockers with examples."
+  },
+
+  {
+    "id": 1,
+    "year": 2021,
+    "subject": "Pathology",
+    "exam": "University",
+    "topic": "Cell Injury",
+    "subtopic": "Apoptosis",
+    "marks": 10,
+    "question": "Describe the molecular pathways of apoptosis. Add differences between intrinsic and extrinsic pathways."
+  },
+  {
+    "id": 2,
+    "year": 2020,
+    "subject": "Pathology",
+    "exam": "Internal",
+    "topic": "Inflammation",
+    "subtopic": "Acute Inflammation",
+    "marks": 3,
+    "question": "Define acute inflammation and enumerate the cardinal signs."
+  },
+  {
+    "id": 3,
+    "year": 2019,
+    "subject": "Pathology",
+    "exam": "University",
+    "topic": "Neoplasia",
+    "subtopic": "Benign vs Malignant",
+    "marks": 10,
+    "question": "Differentiate between benign and malignant tumors based on morphology and biological behavior."
+  },
+  {
+    "id": 4,
+    "year": 2022,
+    "subject": "Pharmacology",
+    "exam": "Internal",
+    "topic": "ANS",
+    "subtopic": "Cholinergic Drugs",
+    "marks": 3,
+    "question": "Classify cholinergic drugs and give two clinical uses."
+  },
+  {
+    "id": 5,
+    "year": 2023,
+    "subject": "Pharmacology",
+    "exam": "University",
+    "topic": "Autacoids",
+    "subtopic": "NSAIDs",
+    "marks": 10,
+    "question": "Describe the mechanism of action and adverse effects of NSAIDs."
+  },
+
+  {
+    "id": 6,
+    "year": 2021,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Bacteriology",
+    "subtopic": "Staphylococcus",
+    "marks": 10,
+    "question": "Discuss the pathogenicity and laboratory diagnosis of Staphylococcus aureus."
+  },
+  {
+    "id": 7,
+    "year": 2018,
+    "subject": "Microbiology",
+    "exam": "Internal",
+    "topic": "Virology",
+    "subtopic": "Rabies Virus",
+    "marks": 3,
+    "question": "Describe the clinical features of rabies infection."
+  },
+  {
+    "id": 8,
+    "year": 2020,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Immunology",
+    "subtopic": "Hypersensitivity",
+    "marks": 10,
+    "question": "Explain the four types of hypersensitivity reactions with suitable examples."
+  },
+  {
+    "id": 9,
+    "year": 2022,
+    "subject": "Community Medicine",
+    "exam": "University",
+    "topic": "Epidemiology",
+    "subtopic": "Study Designs",
+    "marks": 10,
+    "question": "Describe cohort and case-control study designs with advantages and disadvantages."
+  },
+  {
+    "id": 10,
+    "year": 2023,
+    "subject": "Community Medicine",
+    "exam": "Internal",
+    "topic": "Biostatistics",
+    "subtopic": "Mean, Median, Mode",
+    "marks": 3,
+    "question": "Define mean, median, and mode with simple examples."
+  },
+
+  {
+    "id": 11,
+    "year": 2019,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Cardiology",
+    "subtopic": "Heart Failure",
+    "marks": 10,
+    "question": "Discuss the pathophysiology and management of congestive heart failure."
+  },
+  {
+    "id": 12,
+    "year": 2021,
+    "subject": "Medicine",
+    "exam": "Internal",
+    "topic": "Endocrinology",
+    "subtopic": "Diabetes Mellitus",
+    "marks": 3,
+    "question": "Enumerate the complications of uncontrolled diabetes mellitus."
+  },
+  {
+    "id": 13,
+    "year": 2023,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Pulmonology",
+    "subtopic": "COPD",
+    "marks": 10,
+    "question": "Describe the diagnosis and management of chronic obstructive pulmonary disease."
+  },
+  {
+    "id": 14,
+    "year": 2020,
+    "subject": "Medicine",
+    "exam": "Internal",
+    "topic": "Neurology",
+    "subtopic": "Stroke",
+    "marks": 3,
+    "question": "List the risk factors for ischemic stroke."
+  },
+  {
+    "id": 15,
+    "year": 2022,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Gastroenterology",
+    "subtopic": "Peptic Ulcer",
+    "marks": 10,
+    "question": "Explain the etiology, clinical features, and treatment of peptic ulcer disease."
+  },
+
+  {
+    "id": 16,
+    "year": 2021,
+    "subject": "Surgery",
+    "exam": "University",
+    "topic": "Thyroid",
+    "subtopic": "Goiter",
+    "marks": 10,
+    "question": "Explain the classification, clinical features, and treatment of multinodular goiter."
+  },
+  {
+    "id": 17,
+    "year": 2019,
+    "subject": "Surgery",
+    "exam": "Internal",
+    "topic": "GI Surgery",
+    "subtopic": "Appendicitis",
+    "marks": 3,
+    "question": "Enumerate the clinical features of acute appendicitis."
+  },
+  {
+    "id": 18,
+    "year": 2023,
+    "subject": "Surgery",
+    "exam": "University",
+    "topic": "Breast",
+    "subtopic": "Fibroadenoma",
+    "marks": 10,
+    "question": "Describe the clinical features and management of fibroadenoma of the breast."
+  },
+  {
+    "id": 19,
+    "year": 2020,
+    "subject": "Surgery",
+    "exam": "Internal",
+    "topic": "Hernia",
+    "subtopic": "Inguinal Hernia",
+    "marks": 3,
+    "question": "List the complications of untreated inguinal hernia."
+  },
+  {
+    "id": 20,
+    "year": 2023,
+    "subject": "Surgery",
+    "exam": "University",
+    "topic": "Urology",
+    "subtopic": "Renal Calculi",
+    "marks": 10,
+    "question": "Discuss the etiology, clinical features, and management of renal calculi."
+  },
+
+  {
+    "id": 21,
+    "year": 2020,
+    "subject": "OBG",
+    "exam": "University",
+    "topic": "Pregnancy",
+    "subtopic": "PIH",
+    "marks": 10,
+    "question": "Explain the diagnosis and management of pregnancy-induced hypertension."
+  },
+  {
+    "id": 22,
+    "year": 2019,
+    "subject": "OBG",
+    "exam": "Internal",
+    "topic": "Gynecology",
+    "subtopic": "PCOS",
+    "marks": 3,
+    "question": "Enumerate the diagnostic criteria for polycystic ovarian syndrome (PCOS)."
+  },
+  {
+    "id": 23,
+    "year": 2022,
+    "subject": "OBG",
+    "exam": "University",
+    "topic": "Labor",
+    "subtopic": "Partograph",
+    "marks": 10,
+    "question": "Describe the components and interpretation of a WHO partograph."
+  },
+  {
+    "id": 24,
+    "year": 2023,
+    "subject": "OBG",
+    "exam": "Internal",
+    "topic": "Contraception",
+    "subtopic": "IUCD",
+    "marks": 3,
+    "question": "List the contraindications for IUCD insertion."
+  },
+  {
+    "id": 25,
+    "year": 2021,
+    "subject": "OBG",
+    "exam": "University",
+    "topic": "Antenatal Care",
+    "subtopic": "Anemia in Pregnancy",
+    "marks": 10,
+    "question": "Discuss the diagnosis and management of anemia during pregnancy."
+  },
+
+  {
+    "id": 26,
+    "year": 2023,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Mycology",
+    "subtopic": "Candida",
+    "marks": 10,
+    "question": "Describe the laboratory diagnosis of Candida infections."
+  },
+  {
+    "id": 27,
+    "year": 2022,
+    "subject": "Microbiology",
+    "exam": "Internal",
+    "topic": "Parasitology",
+    "subtopic": "Malaria",
+    "marks": 3,
+    "question": "Describe the life cycle of Plasmodium vivax."
+  },
+  {
+    "id": 28,
+    "year": 2021,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Sterilization",
+    "subtopic": "Autoclaving",
+    "marks": 10,
+    "question": "Explain the principle and uses of autoclaving."
+  },
+  {
+    "id": 29,
+    "year": 2020,
+    "subject": "Microbiology",
+    "exam": "Internal",
+    "topic": "Immunity",
+    "subtopic": "Vaccines",
+    "marks": 3,
+    "question": "List the differences between live and killed vaccines."
+  },
+  {
+    "id": 30,
+    "year": 2019,
+    "subject": "Microbiology",
+    "exam": "University",
+    "topic": "Bacteriology",
+    "subtopic": "E. coli",
+    "marks": 10,
+    "question": "Discuss the pathogenesis and laboratory diagnosis of diarrheagenic E. coli."
+  },
+
+  {
+    "id": 31,
+    "year": 2023,
+    "subject": "Pharmacology",
+    "exam": "University",
+    "topic": "CVS Drugs",
+    "subtopic": "Beta Blockers",
+    "marks": 10,
+    "question": "Explain the mechanism of action, uses, and side effects of beta blockers."
+  },
+  {
+    "id": 32,
+    "year": 2022,
+    "subject": "Pharmacology",
+    "exam": "Internal",
+    "topic": "CNS Drugs",
+    "subtopic": "Benzodiazepines",
+    "marks": 3,
+    "question": "List the therapeutic uses of benzodiazepines."
+  },
+  {
+    "id": 33,
+    "year": 2021,
+    "subject": "Pharmacology",
+    "exam": "University",
+    "topic": "Antibiotics",
+    "subtopic": "Penicillins",
+    "marks": 10,
+    "question": "Describe the mechanism and adverse effects of penicillins."
+  },
+  {
+    "id": 34,
+    "year": 2020,
+    "subject": "Pharmacology",
+    "exam": "Internal",
+    "topic": "GI Drugs",
+    "subtopic": "PPIs",
+    "marks": 3,
+    "question": "Mention two uses of proton pump inhibitors."
+  },
+  {
+    "id": 35,
+    "year": 2019,
+    "subject": "Pharmacology",
+    "exam": "University",
+    "topic": "Endocrine Drugs",
+    "subtopic": "Insulin",
+    "marks": 10,
+    "question": "Explain the types, actions, and complications of insulin therapy."
+  },
+
+  {
+    "id": 36,
+    "year": 2023,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Infectious Diseases",
+    "subtopic": "Dengue",
+    "marks": 10,
+    "question": "Discuss the clinical features, diagnosis, and management of dengue fever."
+  },
+  {
+    "id": 37,
+    "year": 2022,
+    "subject": "Medicine",
+    "exam": "Internal",
+    "topic": "Hematology",
+    "subtopic": "Anemia",
+    "marks": 3,
+    "question": "Classify anemia based on RBC indices."
+  },
+  {
+    "id": 38,
+    "year": 2021,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Nephrology",
+    "subtopic": "AKI",
+    "marks": 10,
+    "question": "Explain the causes, diagnosis, and management of acute kidney injury."
+  },
+  {
+    "id": 39,
+    "year": 2020,
+    "subject": "Medicine",
+    "exam": "Internal",
+    "topic": "Rheumatology",
+    "subtopic": "RA",
+    "marks": 3,
+    "question": "List the diagnostic criteria for rheumatoid arthritis."
+  },
+  {
+    "id": 40,
+    "year": 2019,
+    "subject": "Medicine",
+    "exam": "University",
+    "topic": "Infectious Diseases",
+    "subtopic": "TB",
+    "marks": 10,
+    "question": "Describe the clinical features and management of pulmonary tuberculosis."
+  },
+
+  {
+    "id": 41,
+    "year": 2020,
+    "subject": "Community Medicine",
+    "exam": "University",
+    "topic": "Nutrition",
+    "subtopic": "PEM",
+    "marks": 10,
+    "question": "Differentiate between marasmus and kwashiorkor."
+  },
+  {
+    "id": 42,
+    "year": 2021,
+    "subject": "Community Medicine",
+    "exam": "Internal",
+    "topic": "Epidemiology",
+    "subtopic": "Screening",
+    "marks": 3,
+    "question": "Define sensitivity and specificity."
+  },
+  {
+    "id": 43,
+    "year": 2023,
+    "subject": "Community Medicine",
+    "exam": "University",
+    "topic": "Vaccinology",
+    "subtopic": "National Program",
+    "marks": 10,
+    "question": "Describe the National Immunization Schedule of India."
+  },
+  {
+    "id": 44,
+    "year": 2019,
+    "subject": "Community Medicine",
+    "exam": "Internal",
+    "topic": "Environment",
+    "subtopic": "Air Pollution",
+    "marks": 3,
+    "question": "List the health effects of air pollution."
+  },
+  {
+    "id": 45,
+    "year": 2020,
+    "subject": "Community Medicine",
+    "exam": "University",
+    "topic": "Demography",
+    "subtopic": "Population Pyramid",
+    "marks": 10,
+    "question": "Explain the types of population pyramids and their significance."
+  },
+
+  {
+    "id": 46,
+    "year": 2023,
+    "subject": "Pathology",
+    "exam": "University",
+    "topic": "Hematology",
+    "subtopic": "Leukemia",
+    "marks": 10,
+    "question": "Describe the classification, morphology, and clinical features of acute leukemias."
+  },
+  {
+    "id": 47,
+    "year": 2021,
+    "subject": "Pathology",
+    "exam": "Internal",
+    "topic": "Genetics",
+    "subtopic": "Mutation",
+    "marks": 3,
+    "question": "Define mutation and give examples."
+  },
+  {
+    "id": 48,
+    "year": 2022,
+    "subject": "Pathology",
+    "exam": "University",
+    "topic": "Infectious Disease",
+    "subtopic": "Granuloma",
+    "marks": 10,
+    "question": "Explain the formation and types of granulomas."
+  },
+  {
+    "id": 49,
+    "year": 2020,
+    "subject": "Pathology",
+    "exam": "Internal",
+    "topic": "Systemic Pathology",
+    "subtopic": "Atherosclerosis",
+    "marks": 3,
+    "question": "List the risk factors for atherosclerosis."
+  },
+  {
+    "id": 50,
+    "year": 2019,
+    "subject": "Pathology",
+    "exam": "University",
+    "topic": "Inflammation",
+    "subtopic": "Chronic Inflammation",
+    "marks": 10,
+    "question": "Describe the features and causes of chronic inflammation."
+  }
+]
