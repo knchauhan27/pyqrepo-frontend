@@ -1,4 +1,7 @@
-/* ---------- GLOBAL ---------- */
+/* ============================================================
+   ROOT THEME VARIABLES
+============================================================ */
+
 :root {
   --bg-color: #f5f5f7;
   --card-bg: rgba(255, 255, 255, 0.65);
@@ -15,6 +18,10 @@ body.dark {
   --accent: #b38bff;
 }
 
+/* ============================================================
+   GLOBAL STYLING
+============================================================ */
+
 body {
   font-family: "Inter", Arial, sans-serif;
   background-color: var(--bg-color);
@@ -23,7 +30,10 @@ body {
   overflow-x: hidden;
 }
 
-/* ---------- BLOBS ---------- */
+/* ============================================================
+   FLOATING GRADIENT BLOBS
+============================================================ */
+
 .blob {
   position: fixed;
   width: 350px;
@@ -33,7 +43,6 @@ body {
   z-index: -1;
   animation: float 12s ease-in-out infinite;
 }
-
 .blob1 {
   top: -100px;
   left: -100px;
@@ -55,130 +64,74 @@ body {
   }
 }
 
-/* ---------- FILTER BAR ---------- */
-.filters {
+/* ============================================================
+   TOP CONTROLS (Filters + PDF)
+============================================================ */
+
+.top-controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px;
-  border-radius: 14px;
-  backdrop-filter: blur(12px);
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-/* prevent stretching */
-.filters > * {
-  flex: 0 0 auto;
-}
-
-/* ---------- INPUTS ---------- */
-select,
-input,
-button {
-  padding: 10px 14px;
-  font-size: 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: var(--card-bg);
-  color: var(--text-color);
-  backdrop-filter: blur(10px);
-  transition: 0.2s ease;
-}
-
-select:hover,
-input:hover,
-button:hover {
-  border-color: var(--accent);
-}
-
-select {
-  width: 170px;
-}
-
-input {
-  width: 260px;
-}
-
-select[multiple] {
-  height: 100px;
-}
-
-/* ---------- BUTTON ---------- */
-button {
-  cursor: pointer;
+.top-controls button {
+  padding: 10px 18px;
+  font-size: 15px;
   background: var(--accent);
   color: white;
+  border-radius: 12px;
   border: none;
+  cursor: pointer;
   transition: 0.25s;
 }
 
-button:hover {
+.top-controls button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px #0003;
+  box-shadow: 0 4px 15px #0004;
 }
 
-/* ---------- QUESTION CARD ---------- */
-.question-card {
-  padding: 18px;
-  border-radius: 14px;
-  margin-bottom: 15px;
+/* ============================================================
+   SEARCH BOX
+============================================================ */
+
+.search-input {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px 16px;
+  font-size: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
+  background: #fff;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* ============================================================
+   QUESTION CARD
+============================================================ */
+
+.question-card {
+  padding: 20px;
+  margin-bottom: 15px;
   background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
   backdrop-filter: blur(14px);
   transition: 0.3s ease;
 }
 
 .question-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px #0004;
+  box-shadow: 0 6px 20px #0003;
 }
 
-/* ---------- DARK MODE TOGGLE ---------- */
-.theme-toggle {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-}
-
-.theme-toggle input {
-  display: none;
-}
-
-.slider {
-  width: 50px;
-  height: 26px;
-  border-radius: 20px;
-  background: #aaa;
-  position: relative;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  top: 3px;
-  left: 3px;
-  transition: 0.3s;
-}
-
-input:checked + .slider {
-  background: var(--accent);
-}
-
-input:checked + .slider::before {
-  transform: translateX(24px);
-}
-
-/* ===============================
-   FULL-SCREEN OLED FILTER MODAL
-================================*/
+/* ============================================================
+   OLED FULL-SCREEN FILTER MODAL
+============================================================ */
 
 .modal-overlay {
   position: fixed;
@@ -187,20 +140,8 @@ input:checked + .slider::before {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  backdrop-filter: blur(8px);
   z-index: 9999;
-  padding: 0px;
-}
-
-@media (max-width: 600px) {
-  .modal-content {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    padding: 20px 18px;
-    overflow-y: scroll;
-    border: none;
-  }
+  backdrop-filter: blur(6px);
 }
 
 .hidden {
@@ -212,11 +153,25 @@ input:checked + .slider::before {
   max-width: 520px;
   background: #000;
   color: #fff;
-  border: 1px solid #333;
   border-radius: 18px;
-  padding: 20px;
+  border: 1px solid #333;
+  padding: 22px;
+  margin-top: 40px;
   animation: slideUp 0.25s ease;
 }
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* MODAL HEADER */
 
 .modal-header {
   display: flex;
@@ -226,240 +181,157 @@ input:checked + .slider::before {
 
 .modal-header h2 {
   font-size: 22px;
-  font-weight: 700;
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: #888;
-  font-size: 22px;
+  color: #ccc;
+  font-size: 26px;
   cursor: pointer;
 }
+
+/* ============================================================
+   CHIP UI
+============================================================ */
 
 section {
   margin: 18px 0;
 }
-
 section h3 {
   margin-bottom: 8px;
   font-size: 16px;
-  font-weight: 600;
 }
 
-/* CHIP CONTAINERS */
 .chip-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .chip {
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   border: 1px solid #666;
+  color: #eee;
   cursor: pointer;
   transition: 0.2s;
   font-size: 14px;
-  color: #ddd;
 }
 
 .chip:hover {
   border-color: #fff;
 }
-
 .chip.selected {
   background: #fff;
   color: #000;
   border-color: #fff;
-  font-weight: 600;
 }
 
+/* Disabled topic container */
 .chip-container.disabled {
   opacity: 0.3;
   pointer-events: none;
 }
 
-/* DROPDOWNS */
+/* ============================================================
+   MODAL DROPDOWNS
+============================================================ */
+
 select {
-  padding: 10px;
-  border-radius: 8px;
-  background: #111;
-  color: #fff;
-  border: 1px solid #444;
   width: 100%;
+  padding: 12px;
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #444;
+  color: #fff;
+  font-size: 15px;
 }
 
-/* FOOTER BUTTONS */
+/* ============================================================
+   MODAL FOOTER BUTTONS
+============================================================ */
+
 .modal-footer {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
+.reset-btn,
+.apply-btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .reset-btn {
   background: #222;
   border: 1px solid #555;
-  color: #aaa;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
+  color: #bbb;
 }
 
 .apply-btn {
   background: #fff;
   color: #000;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
   font-weight: 700;
 }
 
-.apply-btn:hover {
-  background: #eee;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.search-input {
-  width: 100%;
-  max-width: 350px;
-  padding: 10px 14px;
-  font-size: 15px;
-  margin: 12px 0 20px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  transition: 0.2s;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #a855f7;
-  background: #fff;
-}
-
-/* MOBILE BUTTON SIZING */
-@media (max-width: 600px) {
-  .top-controls button {
-    padding: 12px 18px !important;
-    font-size: 16px !important;
-    border-radius: 12px !important;
-  }
-}
+/* ============================================================
+   MOBILE OPTIMIZATION
+============================================================ */
 
 @media (max-width: 600px) {
-  .chip {
-    padding: 10px 16px;
-    font-size: 15px;
-    border-radius: 22px;
-    margin-bottom: 6px;
-  }
-}
-
-@media (max-width: 600px) {
-  section {
-    margin: 22px 0;
-  }
-  section h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-}
-
-@media (max-width: 600px) {
-  select {
-    padding: 14px !important;
-    font-size: 16px;
-    border-radius: 12px;
-  }
-}
-
-@media (max-width: 600px) {
-  .modal-footer button {
-    padding: 14px 22px !important;
-    font-size: 16px !important;
-    border-radius: 12px !important;
-    width: 48%;
-  }
-}
-
-@media (max-width: 600px) {
-  .close-btn {
-    font-size: 26px !important;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .question-card {
-    padding: 18px !important;
-    border-radius: 14px !important;
+  /* FULL SCREEN MODAL */
+  .modal-content {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+    padding: 24px;
+    overflow-y: scroll;
   }
 
-  .question-card strong {
-    font-size: 18px !important;
-  }
-
-  .question-card p {
-    font-size: 15px !important;
-    margin: 10px 0 !important;
-  }
-
-  .question-card small {
-    font-size: 14px !important;
-  }
-}
-
-/* =====================================
-   FINAL MOBILE FIXES FOR BUTTON SIZING
-======================================*/
-
-@media (max-width: 600px) {
-  /* Top filters + PDF buttons */
-  .top-controls button {
-    padding: 16px 24px !important;
-    font-size: 18px !important;
-    border-radius: 14px !important;
-    min-width: 120px !important;
-    height: 48px !important;
-  }
-
-  /* Modal buttons */
-  .modal-footer .reset-btn,
-  .modal-footer .apply-btn {
-    padding: 16px 24px !important;
-    font-size: 18px !important;
-    border-radius: 14px !important;
-    height: 50px !important;
-  }
-
-  /* Make *all* buttons more touch-friendly */
-  button {
-    min-height: 48px !important;
-  }
-
-  /* Make modal occupy full screen */
   .modal-overlay {
     align-items: stretch !important;
+  }
+
+  /* BUTTONS LARGE */
+  .top-controls button {
+    padding: 16px 26px !important;
+    font-size: 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .modal-footer button {
+    padding: 16px !important;
+    font-size: 18px !important;
+    border-radius: 14px !important;
+    width: 48%;
+    height: 52px !important;
+  }
+
+  /* CHIPS LARGE */
+  .chip {
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 22px;
+  }
+
+  section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* QUESTION CARD FONT SIZE */
+  .question-card strong {
+    font-size: 18px;
+  }
+  .question-card p {
+    font-size: 15px;
+  }
+  .question-card small {
+    font-size: 14px;
   }
 }
