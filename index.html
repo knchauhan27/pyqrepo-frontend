@@ -7,15 +7,29 @@
   </head>
 
   <body>
-    <h1>PYQ Repository by Kunj</h1>
+    <!-- ===========================
+          FLOATING BLOBS (BACKGROUND)
+         ===========================-->
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
 
-    <!-- Top Controls -->
-    <div class="top-controls">
-      <button id="openFilterBtn">Filters</button>
-      <button id="pdfBtn">Export PDF</button>
+    <!-- ===========================
+          FULL-WIDTH STICKY NAVBAR
+         ===========================-->
+    <div class="navbar-wrapper">
+      <nav class="navbar">
+        <div class="nav-left">PYQ Repository</div>
+
+        <div class="nav-right">
+          <button id="openFilterBtn">Filters</button>
+          <button id="pdfBtn">Export</button>
+        </div>
+      </nav>
     </div>
 
-    <!-- 🔍 Search Bar -->
+    <!-- ===========================
+            SEARCH BAR
+        ===========================-->
     <input
       type="text"
       id="searchBox"
@@ -23,34 +37,54 @@
       class="search-input"
     />
 
-    <!-- OLED FULL-SCREEN FILTER MODAL -->
+    <!-- ===========================
+        OLED FULL-SCREEN FILTER MODAL
+      =========================== -->
     <div id="filterModal" class="modal-overlay hidden">
       <div class="modal-content">
+        <!-- HEADER -->
         <div class="modal-header">
           <h2>Filters</h2>
           <button id="closeFilterBtn" class="close-btn">✕</button>
         </div>
 
+        <!-- BODY -->
         <div class="modal-body">
-          <!-- Year Chips -->
+          <!-- YEAR -->
           <section>
             <h3>Year</h3>
             <div id="yearChips" class="chip-container"></div>
           </section>
 
-          <!-- Subject Chips -->
+          <!-- SUBJECT -->
           <section>
             <h3>Subject</h3>
             <div id="subjectChips" class="chip-container"></div>
           </section>
 
-          <!-- Dynamic Topic Chips -->
+          <!-- TOPIC (Dynamic) -->
           <section>
             <h3>Topic</h3>
             <div id="topicChips" class="chip-container disabled"></div>
           </section>
 
-          <!-- Marks Dropdown -->
+          <!-- SUBTOPIC (Dynamic) -->
+          <section>
+            <h3>Sub-Topic</h3>
+            <div id="subtopicChips" class="chip-container disabled"></div>
+          </section>
+
+          <!-- EXAM TYPE -->
+          <section>
+            <h3>Exam Type</h3>
+            <div id="examChips" class="chip-container">
+              <div class="chip" data-value="Internal">Internal</div>
+              <div class="chip" data-value="Prelims">Prelims</div>
+              <div class="chip" data-value="University">University</div>
+            </div>
+          </section>
+
+          <!-- MARKS -->
           <section>
             <h3>Marks</h3>
             <select id="marksFilterModal">
@@ -61,19 +95,32 @@
             </select>
           </section>
 
-          <!-- Sort Dropdown -->
+          <!-- SORTING -->
           <section>
             <h3>Sort By</h3>
             <select id="sortFilterModal">
-              <option value="">None</option>
+              <option value="none">None</option>
+
+              <!-- Year -->
               <option value="yearAsc">Year ↑</option>
               <option value="yearDesc">Year ↓</option>
+
+              <!-- Marks -->
               <option value="marksAsc">Marks ↑</option>
               <option value="marksDesc">Marks ↓</option>
+
+              <!-- Topic -->
+              <option value="topicAsc">Topic A → Z</option>
+              <option value="topicDesc">Topic Z → A</option>
+
+              <!-- Subtopic -->
+              <option value="subtopicAsc">Subtopic A → Z</option>
+              <option value="subtopicDesc">Subtopic Z → A</option>
             </select>
           </section>
         </div>
 
+        <!-- FOOTER BUTTONS -->
         <div class="modal-footer">
           <button id="resetFilters" class="reset-btn">Reset</button>
           <button id="applyFilters" class="apply-btn">Apply Filters</button>
@@ -81,9 +128,23 @@
       </div>
     </div>
 
-    <!-- Results -->
+    <!-- ===========================
+            RESULTS SECTION
+        ===========================-->
     <div id="results"></div>
 
+    <!-- ===========================
+           SLIM STICKY FOOTER (3-ITEM)
+        ===========================-->
+    <footer class="sticky-footer">
+      <div class="footer-left">Made with ❤️</div>
+      <div class="footer-center">© 2025 PYQ Repository</div>
+      <div class="footer-right">
+        <a href="https://github.com/" target="_blank">GitHub ↗</a>
+      </div>
+    </footer>
+
+    <!-- JS LIBRARIES -->
     <script src="./libs/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
   </body>
