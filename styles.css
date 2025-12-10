@@ -429,3 +429,37 @@ select {
     font-size: 14px !important;
   }
 }
+
+/* =====================================
+   FINAL MOBILE FIXES FOR BUTTON SIZING
+======================================*/
+
+@media (max-width: 600px) {
+  /* Top filters + PDF buttons */
+  .top-controls button {
+    padding: 16px 24px !important;
+    font-size: 18px !important;
+    border-radius: 14px !important;
+    min-width: 120px !important;
+    height: 48px !important;
+  }
+
+  /* Modal buttons */
+  .modal-footer .reset-btn,
+  .modal-footer .apply-btn {
+    padding: 16px 24px !important;
+    font-size: 18px !important;
+    border-radius: 14px !important;
+    height: 50px !important;
+  }
+
+  /* Make *all* buttons more touch-friendly */
+  button {
+    min-height: 48px !important;
+  }
+
+  /* Make modal occupy full screen */
+  .modal-overlay {
+    align-items: stretch !important;
+  }
+}
