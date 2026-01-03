@@ -419,3 +419,6 @@ body.dark .sticky-footer {
 .footer-right a:hover {
   text-decoration: underline;
 }
+.question-card p {
+  white-space: pre-line;
+}

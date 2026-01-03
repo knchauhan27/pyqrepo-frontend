@@ -19,6 +19,120 @@ let topicSubtopicMap = {}; // topic → subtopics[]
 let yearList = [];
 let subjectList = [];
 
+function cleanForPDF(text) {
+  return text
+    .replace(/\*\*/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\n+/g, "\n");
+}
+
+function addFooter(doc, pageCount) {
+  const date = new Date().toLocaleString();
+
+  for (let i = 1; i <= pageCount; i++) {
+    doc.setPage(i);
+
+    // Footer line
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+
+    doc.text(`Brainspire | Downloaded on: ${date}`, 10, 290);
+    doc.text(`Page ${i} of ${pageCount}`, 180, 290);
+  }
+}
+
+function addWatermark(doc, text) {
+  const pageCount = doc.getNumberOfPages();
+  const gState = new doc.GState({ opacity: 0.25 });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+
+  for (let i = 1; i <= pageCount; i++) {
+    doc.setPage(i);
+
+    doc.saveGraphicsState();
+    doc.setGState(gState);
+
+    doc.setFontSize(90);
+    doc.setTextColor(150);
+
+    // 🔑 VISUAL CENTER CORRECTION (safe + reliable)
+    const x = pageWidth / 2 + 37;
+    const y = pageHeight / 2 + 67; // manual optical correction
+
+    doc.text(text, x, y, {
+      angle: 45,
+      align: "center",
+    });
+
+    doc.restoreGraphicsState();
+  }
+}
+
+function addCoverPage(doc, filters) {
+  let y = 40;
+
+  // Title
+  doc.setFontSize(22);
+  doc.text("PYQ Repository", 105, y, { align: "center" });
+  y += 12;
+
+  doc.setFontSize(12);
+  doc.text("Developed & Maintained by @brainspirebaroda", 105, y, {
+    align: "center",
+  });
+  y += 20;
+
+  // Greeting / wishing note
+  doc.setFontSize(13);
+  doc.text(
+    "Best wishes for your examinations.\nMay consistent revision bring confidence and success.",
+    105,
+    y,
+    { align: "center" }
+  );
+  y += 25;
+
+  // Filter details heading
+  doc.setFontSize(14);
+  doc.text("Applied Filters", 20, y);
+  y += 10;
+
+  doc.setFontSize(11);
+
+  const lines = [
+    `Subjects: ${filters.subjects || "All"}`,
+    `Years: ${filters.years || "All"}`,
+    `Exams: ${filters.exams || "All"}`,
+    `Marks: ${filters.marks || "All"}`,
+    `Topics: ${filters.topics || "All"}`,
+    `Subtopics: ${filters.subtopics || "All"}`,
+  ];
+
+  lines.forEach((line) => {
+    doc.text(line, 25, y);
+    y += 7;
+  });
+
+  // Footer note
+  doc.setFontSize(10);
+  doc.text(
+    "Generated for academic use only.\nNot for commercial redistribution.",
+    105,
+    260,
+    { align: "center" }
+  );
+}
+
+const filterSummary = {
+  subjects: [...selectedSubjects].join(", "),
+  years: [...selectedYears].join(", "),
+  exams: [...selectedExams].join(", "),
+  marks: marksFilter || "",
+  topics: [...selectedTopics].join(", "),
+  subtopics: [...selectedSubtopics].join(", "),
+};
 /* ============================================================
    INITIAL LOAD
 ============================================================ */
@@ -278,7 +392,7 @@ function displayFiltered(list) {
     const card = document.createElement("div");
     card.className = "question-card";
 
-    let questionText = q.question;
+    let questionText = marked.parse(q.question);
     if (searchQuery) {
       questionText = questionText.replace(
         new RegExp(searchQuery, "gi"),
@@ -308,11 +422,22 @@ document.getElementById("pdfBtn").onclick = () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  let y = 12;
+  const filterSummary = {
+    subjects: [...selectedSubjects].join(", "),
+    years: [...selectedYears].join(", "),
+    exams: [...selectedExams].join(", "),
+    marks: marksFilter || "",
+    topics: [...selectedTopics].join(", "),
+    subtopics: [...selectedSubtopics].join(", "),
+  };
 
-  doc.setFontSize(18);
-  doc.text("PYQ Export", 10, y);
-  y += 10;
+  // 1️⃣ COVER PAGE
+  addCoverPage(doc, filterSummary);
+
+  // 2️⃣ START CONTENT FROM NEW PAGE
+  doc.addPage();
+
+  let y = 12;
 
   const grouped = groupBySubjectAndTopic(currentFiltered);
 
@@ -328,8 +453,15 @@ document.getElementById("pdfBtn").onclick = () => {
 
       grouped[subject][topic].forEach((q) => {
         doc.setFontSize(10);
-        doc.text(`- ${q.question} (${q.year}, ${q.marks} marks)`, 14, y);
-        y += 6;
+
+        const cleanText = cleanForPDF(q.question);
+        const wrapped = doc.splitTextToSize(
+          `- ${cleanText} (${q.year}, ${q.marks} marks)`,
+          180
+        );
+
+        doc.text(wrapped, 14, y);
+        y += wrapped.length * 5;
 
         if (y > 270) {
           doc.addPage();
@@ -342,8 +474,11 @@ document.getElementById("pdfBtn").onclick = () => {
 
     y += 5;
   });
+  const pageCount = doc.getNumberOfPages();
 
-  doc.save("pyqs_export.pdf");
+  addWatermark(doc, "BRAINSPIRE");
+  addFooter(doc, pageCount);
+  doc.save("pyqs_export_brain@kn27.pdf");
 };
 
 /* Group questions → subject → topic */
