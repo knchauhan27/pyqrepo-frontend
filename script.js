@@ -451,17 +451,21 @@ document.getElementById("pdfBtn").onclick = () => {
       doc.text(`• ${topic}`, 12, y);
       y += 6;
 
+      let qNo = 1; // 🔑 reset numbering for each topic
+
       grouped[subject][topic].forEach((q) => {
         doc.setFontSize(10);
 
         const cleanText = cleanForPDF(q.question);
         const wrapped = doc.splitTextToSize(
-          `- ${cleanText} (${q.year}, ${q.marks} marks)`,
+          `${qNo}) ${cleanText} (${q.year}, ${q.marks}m, ${q.exam})`,
           180
         );
 
         doc.text(wrapped, 14, y);
         y += wrapped.length * 5;
+
+        qNo++; // 🔑 increment question number
 
         if (y > 270) {
           doc.addPage();
