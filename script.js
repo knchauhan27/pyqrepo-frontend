@@ -363,8 +363,20 @@ document.getElementById("applyFilters").onclick = () => {
    FILTER ENGINE
 ============================================================ */
 function filterAndDisplay() {
+  const searchQuery = (document.getElementById("searchBox")?.value || "")
+    .toLowerCase()
+    .trim();
+
   let filtered = allPYQs.filter((q) => {
+    // 🔍 SEARCH ELIMINATION LOGIC
+    const matchesSearch =
+      searchQuery === "" ||
+      q.question.toLowerCase().includes(searchQuery) ||
+      q.topic?.toLowerCase().includes(searchQuery) ||
+      q.subtopic?.toLowerCase().includes(searchQuery);
+
     return (
+      matchesSearch &&
       (selectedYears.size === 0 || selectedYears.has(q.year)) &&
       (selectedSubjects.size === 0 || selectedSubjects.has(q.subject)) &&
       (selectedTopics.size === 0 || selectedTopics.has(q.topic)) &&
