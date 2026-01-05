@@ -1,7 +1,7 @@
 /* ============================================================
    GLOBAL STATE
 ============================================================ */
-let pyqData = [];
+let allPYQs = [];
 let currentFiltered = [];
 
 let selectedYears = new Set();
@@ -136,11 +136,34 @@ const filterSummary = {
 /* ============================================================
    INITIAL LOAD
 ============================================================ */
-async function loadData() {
+// async function loadData() {
+//   showSkeleton();
+
+//   const res = await fetch("./data/pyqs.json");
+//   allPYQs = await res.json();
+
+//   preprocessMappings();
+//   renderModalChips();
+
+//   hideSkeleton();
+//   filterAndDisplay();
+// }
+
+async function loadAllPYQs() {
   showSkeleton();
 
-  const res = await fetch("./data/pyqs.json");
-  pyqData = await res.json();
+  const files = [
+    "data/ent.json",
+    "data/ophthal.json",
+    "data/pediatrics.json",
+    "data/surgery.json",
+  ];
+
+  const responses = await Promise.all(
+    files.map((file) => fetch(file).then((res) => res.json()))
+  );
+
+  allPYQs = responses.flat(); // ✅ FIXED
 
   preprocessMappings();
   renderModalChips();
@@ -151,13 +174,13 @@ async function loadData() {
 
 /* Build mapping tables for fast filtering */
 function preprocessMappings() {
-  yearList = [...new Set(pyqData.map((q) => q.year))].sort();
-  subjectList = [...new Set(pyqData.map((q) => q.subject))].sort();
+  yearList = [...new Set(allPYQs.map((q) => q.year))].sort();
+  subjectList = [...new Set(allPYQs.map((q) => q.subject))].sort();
 
   subjectTopicMap = {};
   topicSubtopicMap = {};
 
-  pyqData.forEach((q) => {
+  allPYQs.forEach((q) => {
     // Build subject → topics
     if (!subjectTopicMap[q.subject]) subjectTopicMap[q.subject] = new Set();
     subjectTopicMap[q.subject].add(q.topic);
@@ -340,7 +363,7 @@ document.getElementById("applyFilters").onclick = () => {
    FILTER ENGINE
 ============================================================ */
 function filterAndDisplay() {
-  let filtered = pyqData.filter((q) => {
+  let filtered = allPYQs.filter((q) => {
     return (
       (selectedYears.size === 0 || selectedYears.has(q.year)) &&
       (selectedSubjects.size === 0 || selectedSubjects.has(q.subject)) &&
@@ -401,9 +424,9 @@ function displayFiltered(list) {
     }
 
     card.innerHTML = `
-      <strong>${q.subject} (${q.year}) – ${q.marks} marks</strong>
+      <strong>${q.subject} (${q.year}) – ${q.marks}m ${q.type} </strong>
       <p>${questionText}</p>
-      <small>${q.topic} → ${q.subtopic}</small>
+      <small>${(q.part, q.topic)} → ${q.subtopic}</small>
     `;
 
     results.appendChild(card);
@@ -517,4 +540,4 @@ function hideSkeleton() {
 /* ============================================================
    START
 ============================================================ */
-loadData();
+loadAllPYQs();
