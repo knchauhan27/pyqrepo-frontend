@@ -481,7 +481,7 @@ document.getElementById("pdfBtn").onclick = () => {
 
         const cleanText = cleanForPDF(q.question);
         const wrapped = doc.splitTextToSize(
-          `${qNo}) ${cleanText} (${q.year}, ${q.marks}m, ${q.exam})`,
+          `${qNo}) ${cleanText} (${q.exam}, ${q.year}, ${q.marks}m, ${q.type})`,
           180
         );
 
@@ -505,7 +505,7 @@ document.getElementById("pdfBtn").onclick = () => {
 
   addWatermark(doc, "BRAINSPIRE");
   addFooter(doc, pageCount);
-  doc.save("pyqs_export_brain@kn27.pdf");
+  doc.save("pyqs_brain@kn27.pdf");
 };
 
 /* Group questions → subject → topic */
