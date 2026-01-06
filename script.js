@@ -493,7 +493,7 @@ document.getElementById("pdfBtn").onclick = () => {
 
         const cleanText = cleanForPDF(q.question);
         const wrapped = doc.splitTextToSize(
-          `${qNo}) ${cleanText} (${q.exam}, ${q.year}, ${q.marks}m, ${q.type})`,
+          `${qNo}) ${cleanText} (${q.exam}, ${q.year}, ${q.marks}m)`,
           180
         );
 
