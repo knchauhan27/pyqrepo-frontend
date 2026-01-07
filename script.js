@@ -436,7 +436,9 @@ function displayFiltered(list) {
     }
 
     card.innerHTML = `
-      <strong>${q.subject} (${q.year}) – ${q.marks}m ${q.type} </strong>
+      <strong>${q.subject} (${q.year}) – ${q.marks}m ${q.type} (Paper ${
+      q.part
+    })</strong>
       <p>${questionText}</p>
       <small>${(q.part, q.topic)} → ${q.subtopic}</small>
     `;
@@ -493,7 +495,7 @@ document.getElementById("pdfBtn").onclick = () => {
 
         const cleanText = cleanForPDF(q.question);
         const wrapped = doc.splitTextToSize(
-          `${qNo}) ${cleanText} (${q.exam}, ${q.year}, ${q.marks}m)`,
+          `${qNo}) ${cleanText} (${q.exam}, ${q.year}, ${q.marks}m, P${q.part})`,
           180
         );
 
