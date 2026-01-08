@@ -157,6 +157,8 @@ async function loadAllPYQs() {
     "data/ophthal.json",
     "data/pediatrics.json",
     "data/surgery.json",
+    "data/og.json",
+    "data/med.json",
   ];
 
   const responses = await Promise.all(
