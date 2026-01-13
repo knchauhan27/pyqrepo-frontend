@@ -36,7 +36,11 @@ function addFooter(doc, pageCount) {
     doc.setFontSize(9);
     doc.setTextColor(120);
 
-    doc.text(`Brainspire | Downloaded on: ${date}`, 10, 290);
+    doc.text(
+      `brainspirebaroda@gmail.com | www.repomed.in | Downloaded on: ${date}`,
+      10,
+      290
+    );
     doc.text(`Page ${i} of ${pageCount}`, 180, 290);
   }
 }
@@ -159,6 +163,14 @@ async function loadAllPYQs() {
     "data/surgery.json",
     "data/og.json",
     "data/med.json",
+    "data/psm.json",
+    "data/fmt.json",
+    "data/anat.json",
+    "data/physio.json",
+    "data/biochem.json",
+    "data/patho.json",
+    "data/pharmac.json",
+    "data/micro.json",
   ];
 
   const responses = await Promise.all(

@@ -1,66 +1,127 @@
 /* ============================================================
-   ROOT THEME VARIABLES
+   1. THEME VARIABLES & PALETTE
 ============================================================ */
 
 :root {
-  --bg-color: #f5f5f7;
-  --card-bg: rgba(255, 255, 255, 0.65);
-  --text-color: #222;
-  --border-color: #ddd;
-  --accent: #8a60ff;
-  --page-padding: 20px;
+  /* Core Colors */
+  --bg-color: #f8f9fc;
+  --text-main: #1a1a2e;
+  --text-muted: #6e6e80;
+
+  /* Vivid Accents */
+  --accent-primary: #6366f1; /* Indigo */
+  --accent-secondary: #8b5cf6; /* Violet */
+  --accent-gradient: linear-gradient(135deg, #6366f1, #a855f7);
+  --accent-glow: rgba(99, 102, 241, 0.4);
+
+  /* Glassmorphism Configuration */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-blur: blur(20px);
+  --card-shadow: 0 8px 32px rgba(31, 38, 135, 0.07);
+  --card-hover-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+
+  --page-padding: 24px;
+  --radius-sm: 12px;
+  --radius-lg: 24px;
 }
 
 body.dark {
-  --bg-color: #0f0f11;
-  --card-bg: rgba(25, 25, 30, 0.6);
-  --text-color: #eaeaea;
-  --border-color: #333;
-  --accent: #b38bff;
+  /* Dark Mode Palette */
+  --bg-color: #050507;
+  --text-main: #f0f0f5;
+  --text-muted: #a0a0b0;
+
+  /* Dark Glass */
+  --glass-bg: rgba(20, 20, 25, 0.65);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
 }
 
 /* ============================================================
-   GLOBAL STYLES
+   2. GLOBAL LAYOUT & TYPOGRAPHY
 ============================================================ */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
   background: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-main);
   padding: var(--page-padding);
-  padding-bottom: 60px !important; /* for footer */
+  padding-bottom: 80px !important;
+  min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+strong {
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* ============================================================
-   FLOATING BACKGROUND BLOBS
+   3. ANIMATED AURORA BACKGROUND
 ============================================================ */
 
 .blob {
   position: fixed;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, #8a60ff80, #8a60ff20, transparent);
-  filter: blur(70px);
+  border-radius: 50%;
+  filter: blur(80px);
   z-index: -1;
-  animation: float 12s ease-in-out infinite;
+  opacity: 0.6;
+  animation: float 20s ease-in-out infinite alternate;
 }
 
+/* Vivid colors for blobs */
 .blob1 {
-  top: -120px;
-  left: -120px;
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, #6366f1 0%, transparent 70%);
 }
+
 .blob2 {
-  bottom: -150px;
-  right: -150px;
+  width: 400px;
+  height: 400px;
+  bottom: -50px;
+  right: -50px;
+  background: radial-gradient(
+    circle,
+    #ec4899 0%,
+    transparent 70%
+  ); /* Pinkish */
+  animation-delay: -5s;
+}
+
+.blob3 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 30%;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%); /* Cyan */
+  opacity: 0.4;
+  animation-duration: 25s;
 }
 
 @keyframes float {
   0% {
     transform: translate(0, 0) scale(1);
   }
-  50% {
-    transform: translate(40px, -30px) scale(1.15);
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
   100% {
     transform: translate(0, 0) scale(1);
@@ -68,152 +129,233 @@ body {
 }
 
 /* ============================================================
-   STICKY NAVBAR (FULL WIDTH)
+   4. GLASS NAVBAR
 ============================================================ */
 
+/* 1. The Container - Floats and centers the bar */
 .navbar-wrapper {
-  width: 100vw;
-  margin-left: calc(-1 * var(--page-padding));
-  margin-right: calc(-1 * var(--page-padding));
-  position: sticky;
-  top: 0;
+  position: fixed; /* Floats above content */
+  top: 24px; /* Pushes it down from the browser edge */
+  left: 50%;
+  transform: translateX(-50%); /* Perfectly centered */
+  width: 90%; /* Responsive width */
+  max-width: 750px; /* Never gets too wide on desktop */
   z-index: 9999;
+  padding: 0;
+  pointer-events: none; /* Allows clicking through the empty sides */
 }
 
+/* 2. The Actual Bar - The Glass Pill */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px 24px;
+  pointer-events: auto; /* Re-enable clicking on the bar itself */
 
-  padding: 14px 20px;
+  /* Shape */
+  border-radius: 50px; /* Full pill shape */
+
+  /* Glass Material */
   background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  /* Shadow for depth */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* Dark Mode Adjustments */
 body.dark .navbar {
-  background: rgba(20, 20, 20, 0.55);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(20, 20, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* 3. Logo Text Styling */
 .nav-left {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 4px;
 }
 
-.nav-right {
-  display: flex;
-  gap: 10px;
-}
-
+/* 4. Button Styling inside the pill */
 .navbar button {
-  padding: 10px 16px;
-  font-size: 15px;
-  border-radius: 10px;
-  background: var(--accent);
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 40px;
+  background: var(--text-main);
+  color: var(--bg-color);
   border: none;
-  color: #fff;
   cursor: pointer;
-  transition: 0.25s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .navbar button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px #0003;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3); /* Glow effect */
 }
 
-/* Mobile navbar */
+/* ============================================================
+   IMPORTANT: LAYOUT ADJUSTMENT
+============================================================ */
+
+/* Since the navbar is now "fixed" (floating), it no longer takes up 
+   physical space in the document flow. We must push the rest of 
+   the content down so it doesn't hide behind the navbar.
+*/
+
+body {
+  padding-top: 100px !important; /* Adjust based on navbar height + spacing */
+}
+
+/* Mobile Adjustment - Make it wider on small screens */
 @media (max-width: 600px) {
+  .navbar-wrapper {
+    width: 94%;
+    top: 16px;
+  }
+
   .navbar {
-    padding: 16px 14px;
-  }
-  .nav-left {
-    font-size: 18px;
-  }
-  .navbar button {
     padding: 12px 20px;
+  }
+
+  .nav-left {
     font-size: 16px;
-    border-radius: 12px;
+  }
+
+  .navbar button {
+    padding: 8px 16px;
+    font-size: 12px;
   }
 }
 
 /* ============================================================
-   SEARCH BAR
+   5. SEARCH BAR (Floating input)
 ============================================================ */
 
 .search-input {
-  width: 96%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  margin: 18px 0;
-  background: #fff;
-  font-size: 15px;
+  width: 100%;
+  padding: 18px 24px;
+  border-radius: var(--radius-lg);
+  border: 2px solid transparent; /* Prepare for gradient border */
+  margin: 24px 0 32px 0;
+
+  background: var(--glass-bg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+
+  color: var(--text-main);
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.dark .search-input:focus {
+  background: rgba(30, 30, 35, 0.9);
 }
 
 /* ============================================================
-   QUESTION CARDS
+   6. VIVID QUESTION CARDS
 ============================================================ */
 
 .question-card {
-  padding: 20px;
-  margin-bottom: 16px;
-  background: var(--card-bg);
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(14px);
-  transition: 0.3s ease;
+  position: relative;
+  padding: 24px;
+  margin-bottom: 20px;
+
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+
+  /* Advanced blur */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--card-shadow);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
 }
 
+/* Hover Effect: Lift and Glow */
 .question-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px #0004;
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: var(--card-hover-shadow);
 }
 
-.question-card strong {
-  font-size: 16px;
-}
-.question-card p {
-  margin: 10px 0;
-  line-height: 1.5;
-}
-.question-card small {
+/* Decorative gradient accent on the left */
+.question-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-gradient);
   opacity: 0.7;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .question-card strong {
-    font-size: 18px;
-  }
-  .question-card p {
-    font-size: 15px;
-  }
-  .question-card small {
-    font-size: 14px;
-  }
+/* Typography inside card */
+.question-card strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.question-card p {
+  margin: 8px 0 16px 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.question-card small {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+body.dark .question-card small {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================================
-   FILTER MODAL (OLED STYLE)
+   7. MODAL (OLED / FROSTED STYLE)
 ============================================================ */
 
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0, 0, 0, 0.6); /* Dimmer background */
+  backdrop-filter: blur(8px); /* Blur the content behind */
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 0;
-  z-index: 99999;
+  padding: 60px 20px;
+  z-index: 10000;
   overflow-y: auto;
-  backdrop-filter: blur(8px);
 }
 
 .hidden {
@@ -221,54 +363,61 @@ body.dark .navbar {
 }
 
 .modal-content {
-  width: 92%;
-  max-width: 520px;
-  background: #000;
+  width: 100%;
+  max-width: 500px;
+  background: #111; /* Deep OLED black */
   color: #fff;
-  padding: 26px;
-  border-radius: 18px;
+  padding: 30px;
+  border-radius: 28px;
   border: 1px solid #333;
-  animation: slideUp 0.25s ease;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes slideUp {
-  0% {
-    transform: translateY(40px);
+@keyframes modalSlide {
+  from {
+    transform: translateY(50px) scale(0.95);
     opacity: 0;
   }
-  100% {
-    transform: translateY(0);
+  to {
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
-/* Modal header */
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .modal-header h2 {
-  font-size: 22px;
+  font-size: 24px;
+  background: linear-gradient(to right, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .close-btn {
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  font-size: 26px;
-  color: #ccc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: 0.2s;
+}
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ============================================================
-   CHIP UI
+   8. CHIPS & FILTERS
 ============================================================ */
 
-section {
-  margin: 22px 0;
-}
 section h3 {
-  margin-bottom: 10px;
-  font-size: 17px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 12px;
 }
 
 .chip-container {
@@ -278,147 +427,221 @@ section h3 {
 }
 
 .chip {
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid #666;
-  color: #eee;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ccc;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
+  transition: all 0.2s;
 }
 
 .chip:hover {
-  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
+
 .chip.selected {
   background: #fff;
   color: #000;
   border-color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  transform: scale(1.05);
 }
 
 .chip-container.disabled {
-  opacity: 0.3;
+  opacity: 0.4;
   pointer-events: none;
+  filter: grayscale(1);
 }
-
-/* Mobile chips */
-@media (max-width: 600px) {
-  .chip {
-    padding: 12px 18px;
-    font-size: 16px;
-    border-radius: 22px;
-  }
-  section h3 {
-    font-size: 18px;
-  }
-}
-
-/* ============================================================
-   MODAL DROPDOWNS
-============================================================ */
 
 select {
   width: 100%;
-  padding: 14px;
-  background: #111;
-  border: 1px solid #444;
-  border-radius: 12px;
+  padding: 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 16px;
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
+  outline: none;
+  appearance: none; /* Custom arrow ideally needed here */
+  cursor: pointer;
+}
+select:focus {
+  border-color: #666;
 }
 
-/* ============================================================
-   MODAL FOOTER BUTTONS
-============================================================ */
-
+/* Modal Footer */
 .modal-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
+  margin-top: 30px;
+  gap: 12px;
 }
 
 .reset-btn,
 .apply-btn {
-  padding: 12px 20px;
-  border-radius: 12px;
+  flex: 1;
+  padding: 16px;
+  border-radius: 18px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .reset-btn {
-  background: #222;
-  border: 1px solid #555;
-  color: #bbb;
+  background: transparent;
+  border: 1px solid #333;
+  color: #888;
 }
-.apply-btn {
-  background: #fff;
-  color: #000;
-  font-weight: 700;
+.reset-btn:hover {
+  color: #fff;
+  border-color: #555;
 }
 
-@media (max-width: 600px) {
-  .modal-footer button {
-    padding: 16px !important;
-    font-size: 18px !important;
-    border-radius: 14px !important;
-    width: 48%;
-    height: 52px !important;
-  }
+.apply-btn {
+  background: var(--accent-gradient);
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+.apply-btn:hover {
+  filter: brightness(1.1);
 }
 
 /* ============================================================
-   SLIM STICKY FOOTER (THREE-ITEM)
+   9. STICKY FOOTER
 ============================================================ */
 
 .sticky-footer {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 38px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  height: 48px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 18px;
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 24px;
+  border-radius: 50px; /* Floating pill style */
 
-  font-size: 12.5px;
-  color: #444;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 
-  z-index: 999999;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 9999;
 }
 
 body.dark .sticky-footer {
-  background: rgba(20, 20, 20, 0.4);
-  color: #ccc;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.sticky-footer div {
-  flex: 1;
-  display: flex;
-}
-.footer-left {
-  justify-content: flex-start;
-}
-.footer-center {
-  justify-content: center;
-}
-.footer-right {
-  justify-content: flex-end;
+  background: rgba(30, 30, 35, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .footer-right a {
-  color: inherit;
+  color: var(--accent-secondary);
   text-decoration: none;
+  font-weight: 700;
 }
-.footer-right a:hover {
-  text-decoration: underline;
+
+/* ============================================================
+   10. MOBILE OPTIMIZATIONS
+============================================================ */
+
+@media (max-width: 600px) {
+  :root {
+    --page-padding: 16px;
+  }
+
+  .blob {
+    opacity: 0.4;
+  } /* Less distracting on small screens */
+
+  .question-card {
+    padding: 20px;
+  }
+
+  .sticky-footer {
+    width: 94%;
+    bottom: 12px;
+  }
+
+  .modal-content {
+    border-radius: 24px 24px 0 0;
+    margin-top: auto;
+    margin-bottom: 0;
+    min-height: 70vh;
+  }
+
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
 }
-.question-card p {
-  white-space: pre-line;
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f7f7f7;
+  padding: 40px;
+}
+
+.disclaimer-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Button */
+.disclaimer-toggle {
+  width: 100%;
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.disclaimer-toggle:hover {
+  background: #6366f1;
+}
+
+/* Content */
+.disclaimer-content {
+  display: none;
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 18px;
+  line-height: 1.6;
+  font-size: 14.5px;
+  color: #333;
+}
+
+.disclaimer-content p {
+  margin-bottom: 12px;
+}
+
+.disclaimer-note {
+  font-size: 13px;
+  color: #666;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+/* Smooth open animation */
+.disclaimer-content.open {
+  display: block;
 }

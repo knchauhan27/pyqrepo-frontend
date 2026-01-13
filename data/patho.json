@@ -1,0 +1,15 @@
+[
+  {
+    "id": "PATH001",
+    "college": "MSU",
+    "subject": "Pathology",
+    "part": 1,
+    "year": 2025,
+    "exam": "Uni",
+    "marks": 10,
+    "type": "LAQ",
+    "topic": "Sample_topic",
+    "subtopic": "Sample_SubTopic",
+    "question": "Updating soon…"
+  }
+]

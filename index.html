@@ -57,14 +57,62 @@
         </div>
       </nav>
     </div>
+    <div class="disclaimer-container">
+      <button class="disclaimer-toggle" id="disclaimerBtn">Disclaimer ▼</button>
 
+      <div class="disclaimer-content" id="disclaimerContent">
+        <p>
+          This repository contains
+          <strong>Previous Year Questions (PYQs)</strong> from the MBBS
+          curriculum, compiled exclusively from
+          <strong>officially conducted examinations</strong> of
+          <strong>Baroda Medical College</strong> and
+          <strong>GMERS Medical College, Gotri</strong>, based on the latest
+          papers available to us.
+        </p>
+
+        <p>
+          All questions are presented in their <strong>original form</strong>.
+          <strong
+            >No question has been created, modified, reframed, or
+            interpreted</strong
+          >
+          by any student, faculty member, or third party.
+        </p>
+
+        <p>
+          This platform is intended
+          <strong>solely for academic reference and educational purposes</strong
+          >.
+        </p>
+
+        <p>
+          If you have access to recent or missing official examination papers,
+          please help us keep this repository updated by sharing their PDF/Photo
+          copy at:
+          <br />
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=brainspirebaroda@gmail.com&su=MBBS%20PYQ%20Submission&body=Hello%20Brainspire%20Team,%0A%0AI%20would%20like%20to%20share%20the%20latest%20official%20MBBS%20question%20papers."
+            target="_blank"
+            rel="noopener"
+          >
+            📧 Mail us
+          </a>
+        </p>
+
+        <p class="disclaimer-note">
+          Brainspire is not affiliated with, endorsed by, or officially
+          connected to any examining authority.
+        </p>
+      </div>
+    </div>
     <!-- ===========================
             SEARCH BAR
         ===========================-->
     <input
       type="text"
       id="searchBox"
-      placeholder="Search question text..."
+      placeholder="Please make sure any Subject is selected..."
       class="search-input"
     />
 
@@ -171,7 +219,11 @@
       <div class="footer-left">Made with ❤️</div>
       <div class="footer-center">© 2026 PYQ Repository</div>
       <div class="footer-right">
-        <a href="https://github.com/" target="_blank">GitHub ↗</a>
+        <a
+          href="https://github.com/knchauhan27/pyqrepo-frontend.git"
+          target="_blank"
+          >GitHub ↗</a
+        >
       </div>
     </footer>
 
@@ -179,5 +231,6 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="./libs/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
+    <script src="disclaimer.js"></script>
   </body>
 </html>

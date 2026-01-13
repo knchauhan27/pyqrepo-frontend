@@ -1,0 +1,15 @@
+[
+  {
+    "id": "PHY001",
+    "college": "MSU",
+    "subject": "Physiology",
+    "part": 1,
+    "year": 2025,
+    "exam": "Uni",
+    "marks": 10,
+    "type": "LAQ",
+    "topic": "Sample_topic",
+    "subtopic": "Sample_SubTopic",
+    "question": "Updating soon…"
+  }
+]
